@@ -40,10 +40,10 @@ namespace Alex_Andersen.Controllers
             }
 
         }
-        public IActionResult SignUp()
+        public IActionResult SignUp(int? id)
         {
-
-            return View();
+            User userModel = new User();
+            return View(userModel);
         }
 
     }
