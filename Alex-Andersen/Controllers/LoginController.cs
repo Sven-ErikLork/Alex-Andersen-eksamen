@@ -1,6 +1,7 @@
 ﻿using Alex_Andersen.Models;
 using Alex_Andersen.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Alex_Andersen.Controllers
             SecurityService securityService = new SecurityService();
 
 
-            if(securityService.IsValid(user))
+            if (securityService.IsValid(user))
             {
                 return View("../home/index", user);
             }
@@ -40,11 +41,24 @@ namespace Alex_Andersen.Controllers
             }
 
         }
-        public IActionResult SignUp(int? id)
+       
+        public IActionResult accounts()
         {
-            User userModel = new User();
-            return View(userModel);
+            List<User> user = _context.Users.ToList();
+            return View(user);
+        }
+        public IActionResult SignUp()
+        {
+            return View();
         }
 
+        [HttpPost]
+        public IActionResult SignUp(User user)
+        {
+            _context.Attach(user);
+            _context.Entry(user).State = EntityState.Added;
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
     }
 }
