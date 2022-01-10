@@ -16,10 +16,17 @@ namespace Alex_Andersen.Models
         }
 
         public long DriverId { get; set; }
+        //k
+        public string UserName { get; set; }
+        public string UserPassword { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserEmail { get; set; }
+        public long? UserPhoneNumber { get; set; }
+        //k
         public string ImageFile { get; set; }
         public byte[] IsDriverActive { get; set; }
         public string DriverResidence { get; set; }
-        public long? UserId { get; set; }
         public long? CountryId { get; set; }
         public long? TypePreferenceId { get; set; }
         public long? CityId { get; set; }
@@ -27,7 +34,6 @@ namespace Alex_Andersen.Models
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
         public virtual TypePreference TypePreference { get; set; }
-        public virtual User User { get; set; }
         public virtual ICollection<Availability> Availabilities { get; set; }
         public virtual ICollection<DriversHasLicense> DriversHasLicenses { get; set; }
         public virtual ICollection<TripHasDriver> TripHasDrivers { get; set; }

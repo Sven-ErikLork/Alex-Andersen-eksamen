@@ -22,6 +22,7 @@ namespace Alex_Andersen.Models
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Driver> Drivers { get; set; }
+        public virtual DbSet<DriverMessages> DriverMessages { get; set; }
         public virtual DbSet<DriversHasLicense> DriversHasLicenses { get; set; }
         public virtual DbSet<License> Licenses { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
@@ -161,10 +162,19 @@ namespace Alex_Andersen.Models
                 entity.Property(e => e.TypePreferenceId)
                     .HasColumnType("INT")
                     .HasColumnName("TypePreferenceID");
+                //k
+                entity.Property(e => e.FirstName).HasColumnType("VARCHAR(255)");
 
-                entity.Property(e => e.UserId)
-                    .HasColumnType("INT")
-                    .HasColumnName("UserID");
+                entity.Property(e => e.LastName).HasColumnType("VARCHAR(255)");
+
+                entity.Property(e => e.UserEmail).HasColumnType("VARCHAR(45)");
+
+                entity.Property(e => e.UserName).HasColumnType("VARCHAR(15)");
+
+                entity.Property(e => e.UserPassword).HasColumnType("VARCHAR(255)");
+
+                entity.Property(e => e.UserPhoneNumber).HasColumnType("INT");
+                //k
 
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Drivers)
@@ -177,10 +187,6 @@ namespace Alex_Andersen.Models
                 entity.HasOne(d => d.TypePreference)
                     .WithMany(p => p.Drivers)
                     .HasForeignKey(d => d.TypePreferenceId);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Drivers)
-                    .HasForeignKey(d => d.UserId);
             });
 
             modelBuilder.Entity<DriversHasLicense>(entity =>

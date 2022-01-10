@@ -1,4 +1,4 @@
-﻿@model Alex_Andersen.Models.User
+﻿@model Alex_Andersen.Models.Driver
 
 @{
     ViewData["Title"] = "SignUp";
@@ -6,16 +6,16 @@
 
 <h1>SignUp</h1>
 
-<h4>User</h4>
+<h4>Driver</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="SignUp" method="post">
+        <form asp-action="SignUp">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <input asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
+                <label asp-for="DriverId" class="control-label"></label>
+                <input asp-for="DriverId" class="form-control" />
+                <span asp-validation-for="DriverId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
@@ -47,10 +47,33 @@
                 <input asp-for="UserPhoneNumber" class="form-control" />
                 <span asp-validation-for="UserPhoneNumber" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="RoleId" class="control-label"></label>
-                <select asp-for="RoleId" class ="form-control" asp-items="ViewBag.RoleId"></select>
-            </div>*@
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsDriverActive" class="control-label"></label>
+                <input asp-for="IsDriverActive" class="form-control" />
+                <span asp-validation-for="IsDriverActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverResidence" class="control-label"></label>
+                <input asp-for="DriverResidence" class="form-control" />
+                <span asp-validation-for="DriverResidence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class ="form-control" asp-items="ViewBag.CountryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypePreferenceId" class="control-label"></label>
+                <select asp-for="TypePreferenceId" class ="form-control" asp-items="ViewBag.TypePreferenceId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
